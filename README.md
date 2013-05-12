@@ -13,7 +13,7 @@ You can see the [theme in action](http://magically.us/) or the site code [here](
 ![theme screenshot](https://raw.github.com/kfr2/pelican-foundation/master/screenshot.png)
 
 ## INSTALLATION
-Download or clone the [repository](https://github.com/kfr2/pelican-svbtle). Edit `pelicanconf.py` and modify the `THEME` variable to point to the downloaded theme location.
+Download or clone the [repository](https://github.com/kfr2/pelican-foundation). Edit `pelicanconf.py` and modify the `THEME` variable to point to the downloaded theme location.
 
 ## PELICANCONF.PY
 The following are the Pelican global variables currently supported by the theme.  You may wish to view [Kevin Richardson's pelicanconf.py](https://github.com/kfr2/kfr2.github.com/blob/source/pelicanconf.py) for more information.
