@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} | {{ SITENAME }}{% endblock %}
+{% block content %}
+    <article>
+        <h2 class="title">{{ article.title }} <small><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">&para;</small></a></h2>
+        {{ article.content }}
+        <p><small>
+            Written on <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>.&nbsp;
+            {% if article.category != 'posts' %}
+                Categorized under:  <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.&nbsp;
+            {% endif %}
+            {% if article.tags %}
+                Tagged as:  
+                {% for tag in article.tags -%}
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},&nbsp;{% endif %}
+                {%- endfor %}.
+            {% endif %}
+        </small></p>
+    </article>
+
+    {% if article.related_posts %}
+        <h3>Related Posts</h3>
+        <ul>
+        {% for related_post in article.related_posts %}
+            <li>{{ related_post }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <footer>
+        <a href="{{ SITEURL }}/" class="button small round">&larr;&nbsp;&nbsp;&nbsp;Read more</a>
+    </footer>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" ><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="{{ DEFAULT_LANG }}" ><!--<![endif]-->
+
+{% block head %}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pelican-foundation.css" />
+    <script src="{{ SITEURL }}/theme/js/vendor/custom.modernizr.js"></script>
+
+    {% if FEED_ATOM %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
+    {% endif %}
+    {% if FEED_RSS %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+    {% endif %}
+</head>
+{% endblock head %}
+
+<body>
+    <!-- nav bar -->
+    <div class="row">
+        <div class="large-3 columns">
+            <figure id="user_logo">
+                <a href="{{ SITEURL }}"><div class="logo"><img src="{% if LOGO_URL %}{{ LOGO_URL }}{% else %}/theme/img/default-logo.png{% endif %}" alt="{{ SITENAME }}"></div></a>
+            </figure>
+        </div>
+        <div class="large-9 columns panel">
+            <ul class="inline-list right">
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in PAGES %}
+                        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                    {% endfor %}
+                {% else %}
+                    {% for cat, null in categories %}
+                        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                    {% endfor %}
+                {% endif %}
+                {% for title, link in MENUITEMS %}
+                    <li><a href="{{ link }}">{{ title }}</a></li>
+                {% endfor %}
+                {% for name, link in LINKS %}
+                    <li><a href="{{ link }}">{{ name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- main content -->
+        <div class="large-9 push-3 columns">
+            {% block content %}{% endblock content %}
+        </div>
+
+        <!-- author information/sidebar -->
+        <div class="large-3 pull-9 columns">
+            <h1 class="subheader"><small>{{ AUTHOR }}</small></h1>
+            <p>{{ TAGLINE }}</p>
+
+            {% block sidebar %}{% endblock sidebar %}
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="row">
+        {% block footer %}
+            <div class="large-12 columns">
+                <hr />
+                <p class="right"><small>This work is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA license</a>.</small></p>
+            </div>
+        {% endblock footer %}
+    </footer>
+
+    <script>
+        document.write('<script src=' +
+        ('__proto__' in {} ? '{{ SITEURL }}/theme/js/vendor/zepto' : '{{ SITEURL }}/theme/js/vendor/jquery') +
+        '.js><\/script>')
+    </script>
+    <script src="{{ SITEURL }}/theme/js/foundation.min.js"></script>
+  <!--
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+  
+    <script>
+        $(document).foundation();
+    </script>
+    {% include 'analytics.html' %}
+</body>
+</html>
