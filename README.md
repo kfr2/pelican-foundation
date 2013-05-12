@@ -1,5 +1,5 @@
-# Pelican-Medium
-Pelican-Medium is a theme for [Pelican](http://blog.getpelican.com/) that makes heavy use of the [ZURB Foundation](http://foundation.zurb.com/) front-end framework.
+# Pelican-Foundation
+Pelican-Foundation is a theme for [Pelican](http://blog.getpelican.com/) that makes heavy use of the [ZURB Foundation](http://foundation.zurb.com/) front-end framework.
 
 ## AUTHORS
 * [Kevin Richardson](https://github.com/kfr2)
