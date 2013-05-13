@@ -70,7 +70,7 @@
         {% block footer %}
             <div class="large-12 columns">
                 <hr />
-                <p class="right"><small>This work is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA license</a>.</small></p>
+                <p class="right"><small>{% if FOOTER_MESSAGE %}{{ FOOTER_MESSAGE }}&nbsp;{% endif %}Powered by <a href="http://getpelican.com/">Pelican</a> and <a href="https://github.com/kfr2/pelican-foundation">Pelican-Foundation</a>.</small></p>
             </div>
         {% endblock footer %}
     </footer>
