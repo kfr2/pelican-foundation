@@ -40,11 +40,8 @@
                         <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                     {% endfor %}
                 {% endif %}
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-                {% for name, link in LINKS %}
-                    <li><a href="{{ link }}">{{ name }}</a></li>
+                {% for title, uri in MENUITEMS %}
+                    <li><a href="{{ uri }}">{{ title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -70,7 +67,38 @@
         {% block footer %}
             <div class="large-12 columns">
                 <hr />
-                <p class="right"><small>{% if FOOTER_MESSAGE %}{{ FOOTER_MESSAGE }}&nbsp;{% endif %}Powered by <a href="http://getpelican.com/">Pelican</a> and <a href="https://github.com/kfr2/pelican-foundation">Pelican-Foundation</a>.</small></p>
+                <div class="row">
+                    <div class="large-6 columns">
+                    {% if FEED_ATOM %}
+                        <a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}"><img src="/theme/img/rss.png" alt="ATOM feed" /></a>
+                    {% elif FEED_RSS %}
+                        <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}"><img src="/theme/img/rss.png" alt="RSSfeed" /></a>
+                    {% endif %}
+
+                    {% if TWITTER_USERNAME %}
+                        <a href="https://twitter.com/{{ TWITTER_USERNAME }}"><img src="/theme/img/twitter.png" alt="Twitter" /></a>
+                    {% endif %}
+
+                    {% if FACEBOOK_USERNAME %}
+                        <a href="https://facebook.com/{{ FACEBOOK_USERNAME }}"><img src="/theme/img/facebook.png" alt="Facebook" /></a>
+                    {% endif %}
+
+                    {% if INSTAGRAM_USERNAME %}
+                        <a href="https://instagram.com/{{ INSTAGRAM_USERNAME }}"><img src="/theme/img/instagram.png" alt="Instagram" /></a>
+                    {% endif %}
+
+                    {% if PINTEREST_USERNAME %}
+                        <a href="https://pinterest.com/{{ PINTEREST_USERNAME }}"><img src="/theme/img/pinterest.png" alt="Pinterest" /></a>
+                    {% endif %}
+
+                    {% if YOUTUBE_USERNAME %}
+                        <a href="https://youtube.com/user/{{ YOUTUBE_USERNAME }}"><img src="/theme/img/youtube.png" alt="YouTube" /></a>
+                    {% endif %}
+                    </div>
+                    <div class="large-6 columns">
+                        <p class="right"><small>{% if FOOTER_MESSAGE %}{{ FOOTER_MESSAGE }}&nbsp;{% endif %}Powered by <a href="http://getpelican.com/">Pelican</a> and <a href="https://github.com/kfr2/pelican-foundation">Pelican-Foundation</a>.</small></p>
+                    </div>
+                </div>
             </div>
         {% endblock footer %}
     </footer>
