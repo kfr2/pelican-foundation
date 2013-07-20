@@ -48,17 +48,17 @@
     </div>
 
     <div class="row">
-        <!-- main content -->
-        <div class="large-9 push-3 columns">
-            {% block content %}{% endblock content %}
-        </div>
-
         <!-- author information/sidebar -->
-        <div class="large-3 pull-9 columns">
+        <div class="large-3 columns">
             <h1 class="subheader"><small>{{ AUTHOR }}</small></h1>
-            <p>{{ TAGLINE }}</p>
+            <p class="hide-for-small">{{ TAGLINE }}</p>
 
             {% block sidebar %}{% endblock sidebar %}
+        </div>
+
+        <!-- main content -->
+        <div class="large-9 columns">
+            {% block content %}{% endblock content %}
         </div>
     </div>
 
