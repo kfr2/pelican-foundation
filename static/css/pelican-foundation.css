@@ -6,3 +6,5 @@ li { margin:0 0 15px 15px;padding:3px 0 3px 5px; }
 li.active { color: red; }
 h2 > small > a { display: none; }
 h2:hover > small > a { display: inline; }
+
+.year-article-list { margin-left: 1em; }
