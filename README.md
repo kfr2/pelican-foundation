@@ -24,12 +24,12 @@ The following are the Pelican global variables currently supported by the theme.
 * `DISPLAY_PAGES_ON_MENU` = True/False.    If True, display a list of pages defined within `content/pages`
 * `MENUITEMS` -- (('name1', 'url1'), ('name2', 'url2'))
 * `LINKS` -- (('name1', 'url1'), ('name2', 'url2'))`
-* FOOTER_MESSAGE -- the message to display in the footer of the page. Defaults to "Powered by Pelican and Pelican-Foundation."
-* TWITTER_USERNAME -- if set, a link to the specified Twitter account will be displayed in the footer
-* FACEBOOK_USERNAME -- if set, a link to the specified Facebook account will be displayed in the footer
-* INSTAGRAM_USERNAME -- if set, a link to the specified Instagram account will be displayed in the footer
-* PINTEREST_USERNAME -- if set, a link to the specified Pinterest account will be displayed in the footer
-* YOUTUBE_USERNAME -- if set, a link to the specified YouTube account will be displayed in the footer
+* `FOOTER_MESSAGE` -- the message to display in the footer of the page. Defaults to "Powered by Pelican and Pelican-Foundation."
+* `TWITTER_USERNAME` -- if set, a link to the specified Twitter account will be displayed in the footer
+* `FACEBOOK_USERNAME` -- if set, a link to the specified Facebook account will be displayed in the footer
+* `INSTAGRAM_USERNAME` -- if set, a link to the specified Instagram account will be displayed in the footer
+* `PINTEREST_USERNAME` -- if set, a link to the specified Pinterest account will be displayed in the footer
+* `YOUTUBE_USERNAME` -- if set, a link to the specified YouTube account will be displayed in the footer
 
 ### other
 * `DEFAULT_DATE_FORMAT = ('%b %d, %Y')` -- date format for post publication dates
