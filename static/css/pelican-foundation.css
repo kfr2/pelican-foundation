@@ -1,4 +1,4 @@
-body { font-family: 'Open Sans'; sans-serif; }
+body { font-family: 'Open Sans', sans-serif; font-size: 1.1em; }
 a { color: rgb(28, 78, 137); }
 a.button { background-color: rgb(28, 78, 137); }
 ol, ul { margin-left: 1.5em; }
@@ -7,4 +7,5 @@ li.active { color: red; }
 h2 > small > a { display: none; }
 h2:hover > small > a { display: inline; }
 
-.year-article-list { margin-left: 1em; }
+.page-title { text-align: center; }
+.site-nav { padding-top: 5em; text-align: center; }

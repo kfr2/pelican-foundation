@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" ><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="{{ DEFAULT_LANG }}" ><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="{{ DEFAULT_LANG }}" ><!--<![endif]-->
 
 {% block head %}
@@ -7,14 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/foundation.min.css" />
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pelican-foundation.css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/theme/css/foundation.min.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/theme/css/pelican-foundation.css" rel="stylesheet">
     <script src="{{ SITEURL }}/theme/js/vendor/custom.modernizr.js"></script>
 
-    {% if FEED_ATOM %}
-        <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
-    {% endif %}
     {% if FEED_RSS %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
     {% endif %}
@@ -22,42 +20,44 @@
 {% endblock head %}
 
 <body>
-    <!-- nav bar -->
-    <div class="row">
-        <div class="large-3 columns">
-            <figure id="user_logo">
-                <a href="{{ SITEURL }}"><div class="logo"><img src="{% if LOGO_URL %}{{ LOGO_URL }}{% else %}/theme/img/default-logo.png{% endif %}" alt="{{ SITENAME }}"></div></a>
-            </figure>
-        </div>
-        <div class="large-9 columns panel">
-            <ul class="inline-list right">
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    {% for p in PAGES %}
-                        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                    {% endfor %}
-                {% else %}
-                    {% for cat, null in categories %}
-                        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                    {% endfor %}
-                {% endif %}
-                {% for title, uri in MENUITEMS %}
-                    <li><a href="{{ uri }}">{{ title }}</a></li>
-                {% endfor %}
-            </ul>
+    <div class="site-nav row">
+        <div class="large-10 large-centered columns">
+            <a href="{{ SITEURL }}" class="button small">{{ SITENAME }}</a>
+            {% for title, uri, icon_class in MENUITEMS %}
+                <span data-tooltip class="has-tip tip-top" title="{{ title }}">
+                    <a href="{{ uri }}" class="button small">
+                    {% if icon_class %}
+                        <i class="{{ icon_class }}"></i>
+                    {% else %}
+                        {{ title }}
+                    {% endif %}
+                    </a>
+                </span>
+            {% endfor %}
+
+            {% if GITHUB_USERNAME %}
+                <span data-tooltip class="has-tip tip-top" title="github">
+                    <a href="https://github.com/{{ GITHUB_USERNAME }}" class="button small"><i class="fa fa-github-alt"></i></a>
+                </span>
+            {% endif %}
+
+            {% if TWITTER_USERNAME %}
+                <span data-tooltip class="has-tip tip-top" title="twitter">
+                    <a href="https://twitter.com/{{ TWITTER_USERNAME }}" class="button small"><i class="fa fa-twitter"></i></a>
+                </span>
+            {% endif %}
+
+            {% if FEED_RSS %}
+                <span data-tooltip class="has-tip tip-top" title="feed">
+                    <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" class="button small"><i class="fa fa-rss"></i></a>
+                </span>
+            {% endif %}
         </div>
     </div>
 
     <div class="row">
-        <!-- author information/sidebar -->
-        <div class="large-3 columns">
-            <h1 class="subheader"><small>{{ AUTHOR }}</small></h1>
-            <p class="hide-for-small">{{ TAGLINE }}</p>
-
-            {% block sidebar %}{% endblock sidebar %}
-        </div>
-
         <!-- main content -->
-        <div class="large-9 columns">
+        <div class="large-10 large-centered columns">
             {% block content %}{% endblock content %}
         </div>
     </div>
@@ -68,34 +68,7 @@
             <div class="large-12 columns">
                 <hr />
                 <div class="row">
-                    <div class="large-6 columns">
-                    {% if FEED_ATOM %}
-                        <a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}"><img src="/theme/img/rss.png" alt="ATOM feed" /></a>
-                    {% elif FEED_RSS %}
-                        <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}"><img src="/theme/img/rss.png" alt="RSSfeed" /></a>
-                    {% endif %}
-
-                    {% if TWITTER_USERNAME %}
-                        <a href="https://twitter.com/{{ TWITTER_USERNAME }}"><img src="/theme/img/twitter.png" alt="Twitter" /></a>
-                    {% endif %}
-
-                    {% if FACEBOOK_USERNAME %}
-                        <a href="https://facebook.com/{{ FACEBOOK_USERNAME }}"><img src="/theme/img/facebook.png" alt="Facebook" /></a>
-                    {% endif %}
-
-                    {% if INSTAGRAM_USERNAME %}
-                        <a href="https://instagram.com/{{ INSTAGRAM_USERNAME }}"><img src="/theme/img/instagram.png" alt="Instagram" /></a>
-                    {% endif %}
-
-                    {% if PINTEREST_USERNAME %}
-                        <a href="https://pinterest.com/{{ PINTEREST_USERNAME }}"><img src="/theme/img/pinterest.png" alt="Pinterest" /></a>
-                    {% endif %}
-
-                    {% if YOUTUBE_USERNAME %}
-                        <a href="https://youtube.com/user/{{ YOUTUBE_USERNAME }}"><img src="/theme/img/youtube.png" alt="YouTube" /></a>
-                    {% endif %}
-                    </div>
-                    <div class="large-6 columns">
+                    <div class="large-6 large-centered columns">
                         <p class="right"><small>{% if FOOTER_MESSAGE %}{{ FOOTER_MESSAGE }}&nbsp;{% endif %}Powered by <a href="http://getpelican.com/">Pelican</a> and <a href="https://github.com/kfr2/pelican-foundation">Pelican-Foundation</a>.</small></p>
                     </div>
                 </div>
@@ -109,37 +82,6 @@
         '.js><\/script>')
     </script>
     <script src="{{ SITEURL }}/theme/js/foundation.min.js"></script>
-  <!--
-  <script src="js/foundation/foundation.js"></script>
-  
-  <script src="js/foundation/foundation.alerts.js"></script>
-  
-  <script src="js/foundation/foundation.clearing.js"></script>
-  
-  <script src="js/foundation/foundation.cookie.js"></script>
-  
-  <script src="js/foundation/foundation.dropdown.js"></script>
-  
-  <script src="js/foundation/foundation.forms.js"></script>
-  
-  <script src="js/foundation/foundation.joyride.js"></script>
-  
-  <script src="js/foundation/foundation.magellan.js"></script>
-  
-  <script src="js/foundation/foundation.orbit.js"></script>
-  
-  <script src="js/foundation/foundation.placeholder.js"></script>
-  
-  <script src="js/foundation/foundation.reveal.js"></script>
-  
-  <script src="js/foundation/foundation.section.js"></script>
-  
-  <script src="js/foundation/foundation.tooltips.js"></script>
-  
-  <script src="js/foundation/foundation.topbar.js"></script>
-  
-  -->
-  
     <script>
         $(document).foundation();
     </script>

@@ -1,18 +1,14 @@
 {% extends "base.html" %}
-{% block title %}archives | {{ SITENAME }}{% endblock %}
+{% block title %}all articles | {{ SITENAME }}{% endblock %}
 {% block content %}
-    <h2>Archives</h2>
-    {% for year, date_year in dates|groupby('date.year')|reverse %}
-        <h3>{{ year }}</h3>
-        <div class="year-article-list">
+    <h2 class="page-title">all articles</h2>
+    <ul>
+        {% for year, date_year in dates|groupby('date.year')|reverse %}
             {% for month, articles in date_year|groupby('date.month')|reverse %}
-                <h4>{{ articles[0].date.strftime('%B') }}</h4>
-                <ul>
-                    {% for article in articles %}
-                        <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a> <small>({{ article.locale_date }})</small></li>
-                    {% endfor %}
-                </ul>
+                {% for article in articles %}
+                    <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a> <small>({{ article.locale_date }})</small></li>
+                {% endfor %}
             {% endfor %}
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </ul>
 {% endblock %}

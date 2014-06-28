@@ -2,7 +2,7 @@
 {% block title %}{{ article.title }} | {{ SITENAME }}{% endblock %}
 {% block content %}
     <article>
-        <h2 class="title">{{ article.title }} <small><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">&para;</small></a></h2>
+        <h2 class="page-title">{{ article.title }}</h2>
         {{ article.content }}
         <p><small>
             Written on <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>.&nbsp;
