@@ -7,5 +7,7 @@ li.active { color: red; }
 h2 > small > a { display: none; }
 h2:hover > small > a { display: inline; }
 
+.has-tip { border-bottom: none; }
+.has-tip:hover { border-bottom: none; }
 .page-title { text-align: center; }
 .site-nav { padding-top: 5em; text-align: center; }
