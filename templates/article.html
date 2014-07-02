@@ -15,9 +15,6 @@
                     <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},&nbsp;{% endif %}
                 {%- endfor %}.
             {% endif %}
-            {% if article.gist_id %}
-                <a href="http://gist.github.com/{{ GITHUB_USERNAME }}/{{ article.gist_id }}" target="_blank" class="button tiny success">view and add comments</a>
-            {% endif %}
         </small></p>
     </article>
 
