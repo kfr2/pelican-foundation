@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}all articles | {{ SITENAME }}{% endblock %}
 {% block content %}
-    <h2 class="page-title">all articles</h2>
+    <h2 class="page-title">All Articles</h2>
     <ul>
         {% for year, date_year in dates|groupby('date.year')|reverse %}
             {% for month, articles in date_year|groupby('date.month')|reverse %}
